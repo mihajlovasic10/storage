@@ -1,5 +1,6 @@
 package com.mihajlo.storage.entity;
 
+import com.mihajlo.storage.entity.base.Base;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

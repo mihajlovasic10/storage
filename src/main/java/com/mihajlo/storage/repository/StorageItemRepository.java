@@ -1,11 +1,12 @@
 package com.mihajlo.storage.repository;
 
+import com.mihajlo.storage.repository.base.BaseRepository;
 import com.mihajlo.storage.entity.StorageItem;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class StorageItemRepository extends CrudRepository<StorageItem, Long> {
+public class StorageItemRepository extends BaseRepository<StorageItem, Long> {
 
     private static StorageItemRepository instance;
 

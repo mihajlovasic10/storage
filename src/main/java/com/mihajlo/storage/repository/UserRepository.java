@@ -1,9 +1,10 @@
 package com.mihajlo.storage.repository;
 
+import com.mihajlo.storage.repository.base.BaseRepository;
 import com.mihajlo.storage.entity.User;
 import org.hibernate.Session;
 
-public class UserRepository extends CrudRepository<User, Long> {
+public class UserRepository extends BaseRepository<User, Long> {
 
     private static UserRepository instance;
 

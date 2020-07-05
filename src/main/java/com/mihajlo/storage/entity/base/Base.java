@@ -1,4 +1,4 @@
-package com.mihajlo.storage.entity;
+package com.mihajlo.storage.entity.base;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;

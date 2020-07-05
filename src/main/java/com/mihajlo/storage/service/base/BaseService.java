@@ -1,14 +1,14 @@
-package com.mihajlo.storage.service;
+package com.mihajlo.storage.service.base;
 
-import com.mihajlo.storage.repository.CrudRepository;
+import com.mihajlo.storage.repository.base.BaseRepository;
 
 import java.util.List;
 
-public abstract class CrudService<T, K, R extends CrudRepository<T, K>> {
+public abstract class BaseService<T, K, R extends BaseRepository<T, K>> {
 
     protected final R repository;
 
-    protected CrudService(R repository) {
+    protected BaseService(R repository) {
         this.repository = repository;
     }
 

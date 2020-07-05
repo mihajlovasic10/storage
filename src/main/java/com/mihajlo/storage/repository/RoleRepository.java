@@ -1,8 +1,9 @@
 package com.mihajlo.storage.repository;
 
+import com.mihajlo.storage.repository.base.BaseRepository;
 import com.mihajlo.storage.entity.Role;
 
-public class RoleRepository extends CrudRepository<Role, Long> {
+public class RoleRepository extends BaseRepository<Role, Long> {
 
     private static RoleRepository instance;
 

@@ -17,6 +17,23 @@ services:
       - POSTGRES_DB=storage
     restart: unless-stopped
     
+  
+  pgadmin4:
+    container_name: pgadmin4-ontainer
+    image: thajeztah/pgadmin4:latest
+    expose:
+      - 5050
+    ports:
+      - 5050:5050
+    restart: unless-stopped
+    depends_on:
+      - postgres-db
+    links:
+      - postgres-db
+    volumes:
+      - postgres-db-volume:/pgadmin
+
+
   jetty-server:
     container_name: jetty-server-storage
     build: 

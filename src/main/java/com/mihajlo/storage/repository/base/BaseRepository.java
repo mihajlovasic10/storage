@@ -1,4 +1,4 @@
-package com.mihajlo.storage.repository;
+package com.mihajlo.storage.repository.base;
 
 import com.mihajlo.storage.util.HibernateUtil;
 import org.hibernate.Session;
@@ -7,11 +7,11 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public abstract class CrudRepository<T, K> {
+public abstract class BaseRepository<T, K> {
 
     protected final Class<T> type;
 
-    protected CrudRepository(Class<T> type) {
+    protected BaseRepository(Class<T> type) {
         this.type = type;
     }
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class Home extends HttpServlet {
 
-    private final StorageItemService itemService = new StorageItemService();
+    private static final StorageItemService ITEM_SERVICE = new StorageItemService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,16 +24,16 @@ public class Home extends HttpServlet {
             return;
         }
 
-        if (req.getParameter("delete") != null) itemService.delete(Long.parseLong(req.getParameter("delete")));
+        if (req.getParameter("delete") != null) ITEM_SERVICE.delete(Long.parseLong(req.getParameter("delete")));
         if (req.getParameter("edit") != null) {
-            req.setAttribute("edit", itemService.getById(Long.parseLong(req.getParameter("edit"))));
+            req.setAttribute("edit", ITEM_SERVICE.getById(Long.parseLong(req.getParameter("edit"))));
         }
 
         req.setAttribute("create", req.getParameter("create"));
 
         String search = Optional.ofNullable(req.getParameter("search")).orElse("");
 
-        req.setAttribute("items", itemService.search(search));
+        req.setAttribute("items", ITEM_SERVICE.search(search));
         req.getRequestDispatcher("/home.jsp").forward(req, resp);
     }
 
@@ -80,17 +80,17 @@ public class Home extends HttpServlet {
         item.setTotal(req.getParameter("create-total"));
         item.setTotalPrice(req.getParameter("create-total-price"));
 
-        itemService.create(item);
+        ITEM_SERVICE.create(item);
     }
 
     private void handleUpdate(HttpServletRequest req, HttpServletResponse resp) {
-        StorageItem item = itemService.getById(Long.parseLong(req.getParameter("edit-id")));
+        StorageItem item = ITEM_SERVICE.getById(Long.parseLong(req.getParameter("edit-id")));
 
         item.setName(req.getParameter("edit-name"));
         item.setUnitOfMesure(req.getParameter("edit-unit-of-mesure"));
         item.setTotal(req.getParameter("edit-total"));
         item.setTotalPrice(req.getParameter("edit-total-price"));
 
-        itemService.update(item);
+        ITEM_SERVICE.update(item);
     }
 }
